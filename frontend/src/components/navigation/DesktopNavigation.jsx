@@ -40,7 +40,7 @@ const DesktopNavigation = ({ user: _user, isAdmin, onLogout }) => {
       <div className="desktop-nav-content">
         {/* Main navigation dropdowns */}
         {Object.entries(navigationSections).map(([key, section]) => {
-          // Skip admin section from main nav (goes in account dropdown)
+          // Admin Dashboard linked from the Account dropdown below
           if (key === 'admin') return null;
 
           return (
@@ -149,6 +149,17 @@ const DesktopNavigation = ({ user: _user, isAdmin, onLogout }) => {
                 <ThemeToggle />
               </div>
             </Menu.Item>
+
+            {isAdmin && (
+              <>
+                <Menu.Divider />
+                <Menu.Item onClick={() => navigate('/admin')}>
+                  {t('sidebarNav.items.adminDashboard', 'Admin Dashboard')}
+                </Menu.Item>
+              </>
+            )}
+
+            <Menu.Divider />
 
             <Menu.Item onClick={onLogout} color="red">
               {t('menu.logout', 'Logout')}

@@ -124,6 +124,15 @@ const TabletNavigation = ({ user: _user, isAdmin, onLogout }) => {
                 <ThemeToggle />
               </div>
             </Menu.Item>
+            {isAdmin && (
+              <>
+                <Menu.Divider />
+                <Menu.Item onClick={() => navigate('/admin')}>
+                  {t('sidebarNav.items.adminDashboard', 'Admin Dashboard')}
+                </Menu.Item>
+              </>
+            )}
+            <Menu.Divider />
             <Menu.Item onClick={onLogout} color="red">
               {t('menu.logout', 'Logout')}
             </Menu.Item>
